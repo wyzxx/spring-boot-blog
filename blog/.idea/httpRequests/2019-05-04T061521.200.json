@@ -1,0 +1,16 @@
+{
+  "blogArticleInfo": {
+    "id": 5,
+    "title": "xixi",
+    "traffic": 0,
+    "createBy": "2019-05-04T08:46:47.000+0000",
+    "modifiedBy": "2019-05-04T08:46:47.000+0000",
+    "isEffective": true,
+    "imgUrl": "www.baidu.cn",
+    "contentId": 5
+  },
+  "blogArticleContent": {
+    "id": 5,
+    "content": "222222"
+  }
+}

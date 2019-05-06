@@ -1,0 +1,7 @@
+{
+  "timestamp": "2019-05-03T16:08:15.882+0000",
+  "status": 500,
+  "error": "Internal Server Error",
+  "message": "No adapter for handler [com.wyz.blog.controller.BlogArticleController@14615676]: The DispatcherServlet configuration needs to include a HandlerAdapter that supports this handler",
+  "path": "/admin/articles"
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": 4,
+    "title": "haha",
+    "traffic": 0,
+    "createBy": "2019-05-04T08:42:09.000+0000",
+    "modifiedBy": "2019-05-04T08:42:09.000+0000",
+    "isEffective": true,
+    "imgUrl": "www.baidu.com",
+    "contentId": 4
+  },
+  {
+    "id": 5,
+    "title": "xixi",
+    "traffic": 0,
+    "createBy": "2019-05-04T08:46:47.000+0000",
+    "modifiedBy": "2019-05-04T08:46:47.000+0000",
+    "isEffective": true,
+    "imgUrl": "www.baidu.cn",
+    "contentId": 5
+  },
+  {
+    "id": 6,
+    "title": "xixi",
+    "traffic": 0,
+    "createBy": "2019-05-04T08:49:52.000+0000",
+    "modifiedBy": "2019-05-04T08:49:52.000+0000",
+    "isEffective": true,
+    "imgUrl": "www.baidu.cn",
+    "contentId": 6
+  }
+]
