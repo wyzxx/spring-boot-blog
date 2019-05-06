@@ -4,6 +4,8 @@ import com.wyz.blog.dao.BlogArticleCommentMapper;
 import com.wyz.blog.dao.BlogCommentMapper;
 import com.wyz.blog.dataObject.BlogArticleComment;
 import com.wyz.blog.dataObject.BlogComment;
+import com.wyz.blog.entity.Comment;
+import com.wyz.blog.entity.Filter;
 import com.wyz.blog.service.BlogCommentService;
 import com.wyz.blog.util.BlogUtil;
 import com.wyz.blog.validator.BlogValidator;
@@ -29,6 +31,7 @@ public class BlogCommentServiceImpl implements BlogCommentService {
 
 
     @Override
+    @Transactional
     public boolean addComment(Integer articleId,String content, String name, String email, Integer ref) {
         BlogComment blogComment = BlogUtil.createBlogComment(content,name,email,ref);
         BlogValidator.validateComment(blogComment);
@@ -36,9 +39,13 @@ public class BlogCommentServiceImpl implements BlogCommentService {
         if(ref==0){
             // to do  说明没有引用
         }
-
+        int res1 = blogCommentMapper.insertSelective(blogComment);
+        BlogArticleComment blogArticleComment = new BlogArticleComment();
+        blogArticleComment.setArticleId(articleId);
+        blogArticleComment.setCommentId(blogComment.getId());
+        int res2 = blogArticleCommentMapper.insertSelective(blogArticleComment);
         //to do
-        return true;
+        return res1>0&res2>0;
     }
 
     @Override
@@ -73,15 +80,16 @@ public class BlogCommentServiceImpl implements BlogCommentService {
     }
 
     @Override
-    public List<BlogComment> getComments(Integer articleId) {
+    public List<Filter> getComments(Integer articleId) {
         BlogArticleComment[] blogArticleComments = blogArticleCommentMapper.selectByArticleID(articleId);
         if(blogArticleComments==null){
             return null;
         }
-        List<BlogComment> list = new ArrayList<>();
+        List<Filter> list = new ArrayList<>();
         for (BlogArticleComment k:blogArticleComments) {
             BlogComment blogComment = blogCommentMapper.selectByPrimaryKey(k.getCommentId());
-            list.add(blogComment);
+            Comment comment = BlogUtil.convertFromBlogComment(blogComment);
+            list.add(comment);
         }
         return list;
     }

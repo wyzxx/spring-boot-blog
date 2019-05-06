@@ -1,9 +1,6 @@
 package com.wyz.blog.controller;
 
-import com.wyz.blog.dataObject.BlogCategory;
-import com.wyz.blog.dataObject.BlogComment;
 import com.wyz.blog.entity.Article;
-import com.wyz.blog.entity.Category;
 import com.wyz.blog.entity.Filter;
 import com.wyz.blog.util.BlogUtil;
 import org.springframework.web.bind.annotation.*;
@@ -39,11 +36,23 @@ public class BlogFrontController extends BlogCommonController{
         return null;
     }
 
-
+    @PostMapping("/articles/{articleId}/comments")
     @Override
-    public List<BlogComment> getComments(Integer articleId) {
-        List<BlogComment> list = super.getComments(articleId);
-//        list = BlogUtil.filterList(list);
+    public boolean addComment(@PathVariable Integer articleId,
+                              @RequestParam(name = "content") String content,
+                              @RequestParam(name = "name") String name,
+                              @RequestParam(name = "email") String email,
+                              @RequestParam(name = "reference") Integer ref
+                              ){
+        boolean res = super.addComment(articleId,content,name,email,ref);
+        return res;
+    }
+
+    @GetMapping("/articles/{articleId}/comments")
+    @Override
+    public List<Filter> getComments(@PathVariable  Integer articleId) {
+        List<Filter> list = super.getComments(articleId);
+        list = BlogUtil.filterList(list);
         return list;
     }
 

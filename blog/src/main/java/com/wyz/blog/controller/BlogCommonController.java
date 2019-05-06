@@ -46,8 +46,8 @@ public class BlogCommonController {
     }
 
     public boolean addComment(Integer articleId,String content,String name,String email,Integer ref){
-        blogCommentService.addComment(articleId,content,name,email,ref);
-        return true;
+        boolean res = blogCommentService.addComment(articleId,content,name,email,ref);
+        return res;
     }
 
     public List<BlogComment> getComments(){
@@ -56,8 +56,8 @@ public class BlogCommonController {
     }
 
 
-    protected List<BlogComment> getComments(Integer articleId) {
-        List<BlogComment> list = blogCommentService.getComments(articleId);
+    public List<Filter> getComments(Integer articleId) {
+        List<Filter> list = blogCommentService.getComments(articleId);
         return list;
     }
 

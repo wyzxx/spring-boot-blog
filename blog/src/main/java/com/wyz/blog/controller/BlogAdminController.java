@@ -2,6 +2,7 @@ package com.wyz.blog.controller;
 
 import com.wyz.blog.dataObject.BlogComment;
 import com.wyz.blog.entity.Article;
+import com.wyz.blog.entity.Filter;
 import com.wyz.blog.error.BlogException;
 import com.wyz.blog.service.BlogArticleService;
 import com.wyz.blog.service.BlogCommentService;
@@ -106,8 +107,8 @@ public class BlogAdminController extends BlogCommonController {
 
     @GetMapping("/articles/{articleId}/comments")
     @Override
-    public List<BlogComment> getComments(@PathVariable Integer articleId){
-        List<BlogComment> list = super.getComments(articleId);
+    public List<Filter> getComments(@PathVariable Integer articleId){
+        List<Filter> list = super.getComments(articleId);
         return list;
     }
 

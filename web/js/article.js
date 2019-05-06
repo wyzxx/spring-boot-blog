@@ -31,11 +31,57 @@ $(document).ready(function () {
 
 
 
+    $.ajax(
+        {
+            type: "get",
+            url: host + "/api/articles/"+id+"/comments",
+            // async: true,
+            success(result) {
+                // console.log(result);
+                if (result != "") {
+                    result.forEach(k => {
+                        createComment(k.id,k.name,k.email,k.content,k.reference);
+                    });
+                }
+            }
+
+        
+        });
 
 
 
+$('#post-comment').on('click',function(){
+    var articleId = id;
+    var name = $('#name').val();
+    var email = $('#email').val();
+    var content = $('#comment-textarea').val();
+    var ref = 0;// to do
+    // if(name==null | name==""|name.length==0){
+    //     alert("用户名为空");
+    //     return;
+    // }
+    if(content==null | content==""|content.length==0){
+        alert("内容为空");
+        return;
+    }
+    $.ajax(
+        {
+            type: "POST",
+            url: host + "/api/articles/"+articleId+"/comments",
+            data:{"name":name,"email":email,"content":content,"reference":ref},
+            // async: true,
+            success(result) {
+                // console.log(result);
+                if(result==true){
+                    alert("评论成功");
+                    location.reload();
+                }
+              
+            }
 
-
+        
+        });
+});
 
 
 
@@ -71,5 +117,17 @@ $(document).ready(function () {
         var contentdiv = $('<div>'+marked(content)+'</div>');
         contentdiv.attr('id', 'contents'); 
         contentdiv.appendTo('#articles');
+    }
+
+
+
+    var createComment = function(id,name,email,content,ref){
+        var commentdiv = $('<div class="card mt-1 mb-2"></div>')
+        commentdiv.attr('id', 'comment'+id); 
+        var childdiv01 = $('<div class="card-header">'+name+"  "+email+'</div>');
+        var childdiv02 = $('<div class="card-body"> <blockquote class="blockquote mb-0"> <p>'+content+'</p> </blockquote> </div> </div>');
+        childdiv01.appendTo(commentdiv);
+        childdiv02.appendTo(commentdiv);
+        commentdiv.appendTo($('#comments'));
     }
 })
