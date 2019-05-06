@@ -1,0 +1,7 @@
+{
+  "timestamp": "2019-05-04T08:52:43.040+0000",
+  "status": 405,
+  "error": "Method Not Allowed",
+  "message": "Request method 'PUT' not supported",
+  "path": "/admin/articles"
+}

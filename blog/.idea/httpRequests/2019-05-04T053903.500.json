@@ -1,0 +1,7 @@
+{
+  "timestamp": "2019-05-04T09:39:03.763+0000",
+  "status": 500,
+  "error": "Internal Server Error",
+  "message": "\r\n### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Column 'traffic' cannot be null\r\n### The error may involve com.wyz.blog.dao.BlogArticleInfoMapper.updateByPrimaryKey-Inline\r\n### The error occurred while setting parameters\r\n### SQL: update blog_article_info     set title = ?,       traffic = ?,       create_by = ?,       modified_by = ?,       is_effective = ?,       img_url = ?,       content_id = ?     where id = ?\r\n### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Column 'traffic' cannot be null\n; Column 'traffic' cannot be null; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Column 'traffic' cannot be null",
+  "path": "/admin/articles/5"
+}
