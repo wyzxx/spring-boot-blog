@@ -1,3 +1,41 @@
+POST http://localhost:8080/admin/logintest
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-05-07T094920.200.json
+
+###
+
+POST http://localhost:8080/admin/login?user=1&passwd=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-05-07T094348.200.json
+
+###
+
+POST http://localhost:8080/admin/logintest
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-05-07T094321.200.json
+
+###
+
+POST http://localhost:8080/admin/login?user=1&passwd=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-05-07T094125.200.json
+
+###
+
+POST http://localhost:8080/admin/login?user=1&passwd=2
+Accept: */*
+Cache-Control: no-cache
+
+###
+
 DELETE http://localhost:8080/admin/articles/5?title=xixi&category=&isEffective=true&imgUrl=www.baidu.cn&data=
 Accept: */*
 Cache-Control: no-cache
@@ -303,46 +341,6 @@ Accept: */*
 Cache-Control: no-cache
 
 <> 2019-05-04T120729.500.json
-
-###
-
-GET http://localhost:8080/admin/articles
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-05-04T120706.500.json
-
-###
-
-POST http://localhost:8080/admin/articles
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-05-04T120650.500.json
-
-###
-
-POST http://localhost:8080/admin/articles
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-05-04T120643.500.json
-
-###
-
-POST http://localhost:8080/admin/articles
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-05-04T120639.500.json
-
-###
-
-GET http://localhost:8080/admin/articles
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-05-04T120604.500.json
 
 ###
 

@@ -3,13 +3,17 @@ package com.wyz.blog.controller;
 import com.wyz.blog.dataObject.BlogComment;
 import com.wyz.blog.entity.Article;
 import com.wyz.blog.entity.Filter;
+import com.wyz.blog.entity.Sessions;
 import com.wyz.blog.error.BlogException;
 import com.wyz.blog.service.BlogArticleService;
 import com.wyz.blog.service.BlogCommentService;
+import com.wyz.blog.util.SHA256Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import sun.rmi.runtime.Log;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -31,6 +35,42 @@ public class BlogAdminController extends BlogCommonController {
 
     @Autowired
     private HttpServletRequest httpServletRequest;
+
+    @PostMapping("/login")
+    public Object login(@RequestParam(name = "user") String user,
+                        @RequestParam(name = "passwd") String passwd){
+        //验证密码
+
+//        Object object = Sessions.getAtomicInteger().incrementAndGet();
+//        String key = String.valueOf(SHA256Util.getSHA256StrJava(object.toString()));//改成别的HASH函数
+//        Sessions.getMap().put(key,"login");
+
+
+        String id = httpServletRequest.getSession().getId();
+        httpServletRequest.getSession().setAttribute("ISLOGIN",true);
+        Sessions.getMap().put(id,"login");
+        return id;
+    }
+
+    @PostMapping("/logintest")
+    public boolean login(){
+        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
+        if(isLogin==null){
+            return false;
+        }
+        return isLogin;
+    }
+
+    @PostMapping("/logintest/{sessionId}")
+    public boolean login(@PathVariable String sessionId){
+        Object object = this.httpServletRequest.getSession();
+        if(Sessions.getMap().containsKey(sessionId)){
+            return true;
+        }
+        return false;
+    }
+
+
 
 
     @GetMapping("/articles")
@@ -57,7 +97,7 @@ public class BlogAdminController extends BlogCommonController {
         // 1.判断是否登陆
 //        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
 //        if(isLogin == null || !isLogin.booleanValue()){
-//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，还不能下单");
+//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，");
 //        }
 
 
@@ -75,7 +115,7 @@ public class BlogAdminController extends BlogCommonController {
         // 1.判断是否登陆
 //        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
 //        if(isLogin == null || !isLogin.booleanValue()){
-//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，还不能下单");
+//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，");
 //        }
         System.out.println(title+" "+category+" "+isEffective+" "+imgUrl+" "+ data+" "+id);
 
@@ -90,7 +130,7 @@ public class BlogAdminController extends BlogCommonController {
         // 1.判断是否登陆
 //        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
 //        if(isLogin == null || !isLogin.booleanValue()){
-//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，还不能下单");
+//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，");
 //        }
 
         boolean result = blogArticleService.delArticle(id);
@@ -120,7 +160,7 @@ public class BlogAdminController extends BlogCommonController {
         // 1.判断是否登陆
 //        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
 //        if(isLogin == null || !isLogin.booleanValue()){
-//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，还不能下单");
+//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，");
 //        }
 
         System.out.println(isEffective+" "+id);
@@ -135,7 +175,7 @@ public class BlogAdminController extends BlogCommonController {
         // 1.判断是否登陆
 //        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
 //        if(isLogin == null || !isLogin.booleanValue()){
-//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，还不能下单");
+//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，");
 //        }
 
         boolean result = blogCommentService.deleteComment(id);

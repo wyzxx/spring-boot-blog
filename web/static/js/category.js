@@ -20,7 +20,7 @@ $(document).ready(function () {
                                 if (result != "") {
                                     result.forEach(m => {
                                         console.log(m);
-                                        url = m.blogArticleInfo.id;
+                                        url = "article.html#"+m.blogArticleInfo.id;
                                         createSimpleArticle(k.id, m.blogArticleInfo.createBy.substr(0, 10), url, m.blogArticleInfo.title);
                                     })
                                 }

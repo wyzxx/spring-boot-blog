@@ -1,6 +1,38 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function () {
 
+  var id = $.cookie('JSESSIONID');
+ 
+  // var url = location.href;
+  // var patt1 = new RegExp("#([0-9]|[A-Za-z])+");
+  // console.log(patt1.exec(url));
+  // if (patt1.exec(url) == null) {
+  //   alert("请先登陆!");
+  //   window.location.href = "login.html";
+  //   return;
+  // }
+  // var id = patt1.exec(url)[0].substr(1);  //获取session的值
+
+  // // document.cookie="JSESSIONID="+id;
+  // console.log(id);
+  // //检查是否登陆
+  $.ajax(
+    {
+      type: "post",
+      url: "http://localhost:8080/admin/logintest/" + id,
+      // async: true,
+      success(result) {
+        if (result != true) {
+          alert("请先登陆!");
+          window.location.href = "login.html";
+          return;
+        }
+        // console.log(result);
+      }
+    });
+
+
+
   //Ajax调用处理
   $.ajax(
     {
@@ -36,7 +68,7 @@ $(document).ready(function () {
         // console.log(result);
 
         result.forEach(k => {
-          creatediv2(k.id, k.name, k.email, k.content, k.reference, k.isExpected,k.isEffective)
+          creatediv2(k.id, k.name, k.email, k.content, k.reference, k.isExpected, k.isEffective)
         });
         $('#dataTable2').DataTable();
       }
