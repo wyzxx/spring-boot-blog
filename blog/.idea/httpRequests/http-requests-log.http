@@ -1,3 +1,11 @@
+POST http://localhost:8080/admin/login?user=1&passwd=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-05-08T060044.200.json
+
+###
+
 POST http://localhost:8080/admin/logintest
 Accept: */*
 Cache-Control: no-cache
@@ -333,14 +341,6 @@ Accept: */*
 Cache-Control: no-cache
 
 <> 2019-05-04T120815.500.json
-
-###
-
-GET http://localhost:8080/admin/articles
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-05-04T120729.500.json
 
 ###
 

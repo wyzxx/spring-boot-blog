@@ -3,7 +3,9 @@ package com.wyz.blog.config;
 
 import com.wyz.blog.filter.LoginFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.filter.HttpPutFormContentFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -14,6 +16,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class MyWebMvcConfigurerAdapter implements WebMvcConfigurer {
+
+
     @Autowired
     private LoginFilter loginFilter;
     @Override
@@ -29,6 +33,7 @@ public class MyWebMvcConfigurerAdapter implements WebMvcConfigurer {
                 .allowedOrigins("*")
                 //是否允许证书 不再默认开启
                 .allowCredentials(true)
+                .allowedHeaders("*")
                 //设置允许的方法
                 .allowedMethods("*")
                 //跨域允许时间

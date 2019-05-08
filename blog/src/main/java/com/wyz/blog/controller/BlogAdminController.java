@@ -3,19 +3,14 @@ package com.wyz.blog.controller;
 import com.wyz.blog.dataObject.BlogComment;
 import com.wyz.blog.entity.Article;
 import com.wyz.blog.entity.Comment;
-import com.wyz.blog.entity.Filter;
-import com.wyz.blog.entity.Sessions;
 import com.wyz.blog.error.BlogException;
 import com.wyz.blog.service.BlogArticleService;
 import com.wyz.blog.service.BlogCommentService;
-import com.wyz.blog.util.SHA256Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import sun.rmi.runtime.Log;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -25,7 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/admin")
-//@CrossOrigin(origins = {"*"},allowCredentials = "true")
+@CrossOrigin(origins = {"*"},allowCredentials = "true")
 public class BlogAdminController extends BlogCommonController {
 
 
@@ -77,7 +72,7 @@ public class BlogAdminController extends BlogCommonController {
     }
 
     @PutMapping("/articles/{id}")
-    public void updateArticle(@RequestParam(name = "title") String title,
+    public Object updateArticle(@RequestParam(name = "title") String title,
                               @RequestParam(name = "isCategoryChanged") Boolean isCategoryChanged,
                               @RequestParam(name = "category") String category,
                               @RequestParam(name = "isEffective") Boolean isEffective,
@@ -87,7 +82,8 @@ public class BlogAdminController extends BlogCommonController {
         System.out.println(title+" "+category+" "+isEffective+" "+imgUrl+" "+ data+" "+id);
 
         // 更新文章
-        blogArticleService.updateArticle(id,title,isCategoryChanged,category,isEffective,imgUrl,data);
+        boolean res = blogArticleService.updateArticle(id,title,isCategoryChanged,category,isEffective,imgUrl,data);
+        return res;
 
     }
 
@@ -121,7 +117,7 @@ public class BlogAdminController extends BlogCommonController {
                               @RequestParam(name = "isEffective") Boolean isEffective,
                               @PathVariable Integer id) throws BlogException {
 
-
+        boolean isLogin = (boolean) httpServletRequest.getSession().getAttribute("ISLOGIN");
         System.out.println(isEffective+" "+id);
 
         blogCommentService.updateComment(id,isEffective);
