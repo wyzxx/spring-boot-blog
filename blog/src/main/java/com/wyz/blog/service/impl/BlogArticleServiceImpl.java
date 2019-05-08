@@ -155,8 +155,18 @@ public class BlogArticleServiceImpl implements BlogArticleService {
     }
 
     @Override
+    @Transactional
     public Article getArticle(Integer id) {
         BlogArticleInfo blogArticleInfo = blogArticleInfoMapper.selectByPrimaryKey(id);
+
+        //流量加1
+        if(blogArticleInfo.getTraffic()==null){
+            blogArticleInfo.setTraffic(0);
+        }
+        blogArticleInfo.setTraffic(blogArticleInfo.getTraffic()+1);
+        blogArticleInfoMapper.updateByPrimaryKeySelective(blogArticleInfo);
+        //
+
         BlogArticleContent blogArticleContent = blogArticleContentMapper.selectByPrimaryKey(blogArticleInfo.getContentId());
         List<String> category = blogCategoryService.getCategory(id);
 //        List<String>  to do comment
@@ -176,12 +186,12 @@ public class BlogArticleServiceImpl implements BlogArticleService {
     }
 
     @Override
-    public List<Filter> getArticles(Integer categoryId) {
+    public List<Article> getArticles(Integer categoryId) {
         BlogCategoryArticle[] blogCategoryArticles = blogCategoryArticleMapper.selectByCategoryId(categoryId);
         if(blogCategoryArticles==null||blogCategoryArticles.length==0){
             return null;
         }
-        List<Filter> list = new ArrayList<>();
+        List<Article> list = new ArrayList<>();
 
         for (BlogCategoryArticle k:blogCategoryArticles) {
             BlogArticleInfo blogArticleInfo = blogArticleInfoMapper.selectByPrimaryKey(k.getArticleId());

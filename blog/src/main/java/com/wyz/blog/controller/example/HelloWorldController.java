@@ -1,4 +1,4 @@
-package com.wyz.blog.controller;
+package com.wyz.blog.controller.example;
 
 import com.wyz.blog.service.HelloWorldService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -18,7 +18,7 @@ public class MyWebMvcConfigurerAdapter implements WebMvcConfigurer {
     private LoginFilter loginFilter;
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginFilter).addPathPatterns("/admin/**");
+        registry.addInterceptor(loginFilter).addPathPatterns("/admin/**").excludePathPatterns("/admin/login");
     }
 
     @Override

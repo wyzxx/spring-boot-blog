@@ -39,9 +39,9 @@ $(document).ready(function () {
                 // async: true,
                 success(result) {
                     // alert(result);
-                    console.log($.cookie('JSESSIONID', result));
-                    // window.location.href = "admin.html";
-                    // return;
+                    // console.log($.cookie('JSESSIONID', result));
+                    window.location.href = "admin.html";
+                    return false;
                 }
             });
     });

@@ -2,6 +2,7 @@ package com.wyz.blog.controller;
 
 import com.wyz.blog.dataObject.BlogComment;
 import com.wyz.blog.entity.Article;
+import com.wyz.blog.entity.Comment;
 import com.wyz.blog.entity.Filter;
 import com.wyz.blog.entity.Sessions;
 import com.wyz.blog.error.BlogException;
@@ -38,42 +39,14 @@ public class BlogAdminController extends BlogCommonController {
     private HttpServletRequest httpServletRequest;
 
     @PostMapping("/login")
-    public Object login(@RequestParam(name = "user") String user,
+    public Boolean login(@RequestParam(name = "user") String user,
                         @RequestParam(name = "passwd") String passwd,HttpServletRequest request, HttpServletResponse response){
         //验证密码
+        //此处未验证
 
-//        Object object = Sessions.getAtomicInteger().incrementAndGet();
-//        String key = String.valueOf(SHA256Util.getSHA256StrJava(object.toString()));//改成别的HASH函数
-//        Sessions.getMap().put(key,"login");
-
-        System.out.println(request);
-        System.out.println(response);
-        System.out.println(1);
-
-//        String id = httpServletRequest.getSession().getId();
-//        httpServletRequest.getSession().setAttribute("ISLOGIN",true);
-//        Sessions.getMap().put(id,"login");
-        return 1;
+        httpServletRequest.getSession().setAttribute("ISLOGIN",true);
+        return true;
     }
-
-    @PostMapping("/logintest")
-    public boolean login(){
-        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
-        if(isLogin==null){
-            return false;
-        }
-        return isLogin;
-    }
-
-    @PostMapping("/logintest/{sessionId}")
-    public boolean login(@PathVariable String sessionId){
-        Object object = this.httpServletRequest.getSession();
-        if(Sessions.getMap().containsKey(sessionId)){
-            return true;
-        }
-        return false;
-    }
-
 
 
 
@@ -98,12 +71,6 @@ public class BlogAdminController extends BlogCommonController {
                            @RequestParam(name = "imgUrl") String imgUrl,
                            @RequestParam(name = "data") String data) throws BlogException {
 
-        // 1.判断是否登陆
-//        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
-//        if(isLogin == null || !isLogin.booleanValue()){
-//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，");
-//        }
-
 
         blogArticleService.addArticle(title,category,isEffective,imgUrl,data);
 
@@ -116,11 +83,7 @@ public class BlogAdminController extends BlogCommonController {
                               @RequestParam(name = "isEffective") Boolean isEffective,
                               @RequestParam(name = "imgUrl") String imgUrl,
                               @RequestParam(name = "data") String data,@PathVariable Integer id) throws BlogException {
-        // 1.判断是否登陆
-//        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
-//        if(isLogin == null || !isLogin.booleanValue()){
-//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，");
-//        }
+
         System.out.println(title+" "+category+" "+isEffective+" "+imgUrl+" "+ data+" "+id);
 
         // 更新文章
@@ -131,11 +94,7 @@ public class BlogAdminController extends BlogCommonController {
     @DeleteMapping("/articles/{id}")
     public boolean delArticle(@PathVariable Integer id){
 
-        // 1.判断是否登陆
-//        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
-//        if(isLogin == null || !isLogin.booleanValue()){
-//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，");
-//        }
+
 
         boolean result = blogArticleService.delArticle(id);
         return result;
@@ -151,8 +110,8 @@ public class BlogAdminController extends BlogCommonController {
 
     @GetMapping("/articles/{articleId}/comments")
     @Override
-    public List<Filter> getComments(@PathVariable Integer articleId){
-        List<Filter> list = super.getComments(articleId);
+    public List<Comment> getComments(@PathVariable Integer articleId){
+        List<Comment> list = super.getComments(articleId);
         return list;
     }
 
@@ -161,11 +120,7 @@ public class BlogAdminController extends BlogCommonController {
     public void updateComment(
                               @RequestParam(name = "isEffective") Boolean isEffective,
                               @PathVariable Integer id) throws BlogException {
-        // 1.判断是否登陆
-//        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
-//        if(isLogin == null || !isLogin.booleanValue()){
-//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，");
-//        }
+
 
         System.out.println(isEffective+" "+id);
 
@@ -176,11 +131,7 @@ public class BlogAdminController extends BlogCommonController {
     @DeleteMapping("/comments/{id}")
     public boolean delComment(@PathVariable Integer id){
 
-        // 1.判断是否登陆
-//        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
-//        if(isLogin == null || !isLogin.booleanValue()){
-//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，");
-//        }
+
 
         boolean result = blogCommentService.deleteComment(id);
         return result;

@@ -1,7 +1,7 @@
 package com.wyz.blog.service;
 
 import com.wyz.blog.dataObject.BlogComment;
-import com.wyz.blog.entity.Filter;
+import com.wyz.blog.entity.Comment;
 
 import java.util.List;
 
@@ -16,5 +16,5 @@ public interface BlogCommentService {
     boolean deleteComment(Integer id);
     boolean updateComment(Integer id, Boolean isEffective);
     List<BlogComment> getComments();
-    List<Filter> getComments(Integer articleId);
+    List<Comment> getComments(Integer articleId);
 }

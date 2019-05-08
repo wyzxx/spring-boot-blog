@@ -80,7 +80,7 @@ public class BlogUtil {
         return blogComment;
     }
 
-    public static  List<Filter> filterList(List<Filter> list){
+    public static <E>  List<E> filterList(List<E> list){
         if(list==null){
             return null;
         }

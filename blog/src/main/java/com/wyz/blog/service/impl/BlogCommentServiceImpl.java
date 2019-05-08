@@ -5,7 +5,6 @@ import com.wyz.blog.dao.BlogCommentMapper;
 import com.wyz.blog.dataObject.BlogArticleComment;
 import com.wyz.blog.dataObject.BlogComment;
 import com.wyz.blog.entity.Comment;
-import com.wyz.blog.entity.Filter;
 import com.wyz.blog.service.BlogCommentService;
 import com.wyz.blog.util.BlogUtil;
 import com.wyz.blog.validator.BlogValidator;
@@ -80,12 +79,12 @@ public class BlogCommentServiceImpl implements BlogCommentService {
     }
 
     @Override
-    public List<Filter> getComments(Integer articleId) {
+    public List<Comment> getComments(Integer articleId) {
         BlogArticleComment[] blogArticleComments = blogArticleCommentMapper.selectByArticleID(articleId);
         if(blogArticleComments==null){
             return null;
         }
-        List<Filter> list = new ArrayList<>();
+        List<Comment> list = new ArrayList<>();
         for (BlogArticleComment k:blogArticleComments) {
             BlogComment blogComment = blogCommentMapper.selectByPrimaryKey(k.getCommentId());
             Comment comment = BlogUtil.convertFromBlogComment(blogComment);

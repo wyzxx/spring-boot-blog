@@ -22,7 +22,7 @@ $(document).ready(function () {
             success(result) {
                 // console.log(result);
                 if (result != "") {
-                    createArticleInfo(result.blogArticleInfo.id, result.blogArticleInfo.title, result.category, result.blogArticleInfo.createBy.substr(0, 10), result.blogArticleInfo.imgUrl);
+                    createArticleInfo(result.blogArticleInfo.id, result.blogArticleInfo.title, result.category, result.blogArticleInfo.createBy.substr(0, 10), result.blogArticleInfo.imgUrl,result.blogArticleInfo.traffic);
                     createArticleContent(result.blogArticleContent.content);
                 }
             }
@@ -92,17 +92,19 @@ $('#post-comment').on('click',function(){
 
 
 
-    var createArticleInfo = function (id, title, category, createBy, imgUrl) {
+    var createArticleInfo = function (id, title, category, createBy, imgUrl,traffic) {
         var parentdiv = $('<article class="mt-5"></article>');        //创建一个父div
         parentdiv.attr('id', 'article' + id);        //给父div设置id
         var headerdiv = $('<header></header');
         var childdiv01 = $('<h1 class="text-dark">' + title + '</h1>');        //创建一个子div
         var childdiv02 = $('<span class="">发表于 <time>' + createBy + '</time> </span>');        //创建一个子div
         var childdiv03 = $('<span class="category"> &nbsp; | &nbsp; <span class="">分类: <strong>' + category + '</strong> </span> </span>');        //创建一个子div
+        var childdiv04 = $('<span class="traffic"> &nbsp; | &nbsp; <span class="">浏览量: '+traffic+' </span> </span>');        //创建一个子div
 
         childdiv01.appendTo(headerdiv);
         childdiv02.appendTo(headerdiv);
         childdiv03.appendTo(headerdiv);
+        childdiv04.appendTo(headerdiv);
 
         headerdiv.appendTo(parentdiv);
 

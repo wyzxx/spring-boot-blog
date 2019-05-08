@@ -1,7 +1,6 @@
 package com.wyz.blog.service;
 
 import com.wyz.blog.entity.Article;
-import com.wyz.blog.entity.Filter;
 import com.wyz.blog.error.BlogException;
 
 import java.util.List;
@@ -22,7 +21,7 @@ public interface BlogArticleService {
 
     boolean delArticle(Integer id);
 
-    List<Filter> getArticles(Integer categoryId);
+    List<Article> getArticles(Integer categoryId);
 
     boolean updateContent(Integer id, String data);
 }

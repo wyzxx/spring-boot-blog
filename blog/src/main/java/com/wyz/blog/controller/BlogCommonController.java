@@ -3,6 +3,8 @@ package com.wyz.blog.controller;
 import com.wyz.blog.dataObject.BlogCategory;
 import com.wyz.blog.dataObject.BlogComment;
 import com.wyz.blog.entity.Article;
+import com.wyz.blog.entity.Category;
+import com.wyz.blog.entity.Comment;
 import com.wyz.blog.entity.Filter;
 import com.wyz.blog.service.BlogArticleService;
 import com.wyz.blog.service.BlogCategoryService;
@@ -19,7 +21,7 @@ import java.util.List;
  */
 @RestController
 @CrossOrigin(origins = {"*"},allowCredentials = "true")
-public class BlogCommonController {
+public class BlogCommonController extends BaseController{
 
     @Autowired
     private BlogCategoryService blogCategoryService;
@@ -35,8 +37,8 @@ public class BlogCommonController {
         return list;
     }
 
-    public List<Filter> getArticles(Integer categoryId){
-        List<Filter> list =  blogArticleService.getArticles(categoryId);
+    public List<Article> getArticles(Integer categoryId){
+        List<Article> list =  blogArticleService.getArticles(categoryId);
         return list;
     }
 
@@ -56,13 +58,13 @@ public class BlogCommonController {
     }
 
 
-    public List<Filter> getComments(Integer articleId) {
-        List<Filter> list = blogCommentService.getComments(articleId);
+    public List<Comment> getComments(Integer articleId) {
+        List<Comment> list = blogCommentService.getComments(articleId);
         return list;
     }
 
-    public List<Filter> getCategories(){
-        List<Filter> list = blogCategoryService.getCategories();
+    public List<Category> getCategories(){
+        List<Category> list = blogCategoryService.getCategories();
         return list;
     }
 

@@ -1,4 +1,4 @@
-package com.wyz.blog.controller;
+package com.wyz.blog.controller.example;
 
 
 import com.wyz.blog.dataObject.User;

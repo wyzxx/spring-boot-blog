@@ -73,13 +73,13 @@ public class BlogCategoryServiceImpl implements BlogCategoryService {
     }
 
     @Override
-    public List<Filter> getCategories() {
+    public List<Category> getCategories() {
         BlogCategory[] blogCategories = blogCategoryMapper.selectAll();
         if(blogCategories==null){
             return null;
         }
         Category[] categories = BlogUtil.convertFromBlogCategory(blogCategories);
-        List<Filter> list = new ArrayList<>();
+        List<Category> list = new ArrayList<>();
         for (Category k:categories) {
             list.add(k);
         }

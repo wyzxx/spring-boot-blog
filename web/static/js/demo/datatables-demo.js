@@ -16,28 +16,14 @@ $(document).ready(function () {
   // // document.cookie="JSESSIONID="+id;
   // console.log(id);
   // //检查是否登陆
-  $.ajax(
-    {
-      type: "post",
-      url: "http://localhost:8080/admin/logintest/" + id,
-      // async: true,
-      success(result) {
-        if (result != true) {
-          alert("请先登陆!");
-          window.location.href = "login.html";
-          return;
-        }
-        // console.log(result);
-      }
-    });
-
-
 
   //Ajax调用处理
   $.ajax(
     {
       type: "get",
       url: "http://localhost:8080/admin/articles",
+      xhrFields: { withCredentials: true },
+
       // async: true,
       success(result) {
 
@@ -50,7 +36,14 @@ $(document).ready(function () {
 
 
         $('#dataTable').DataTable();
+      },
+       error:function(error){
+        alert("请先登陆!");
+        window.location.href = "login.html";
+        return false;
       }
+      // console.log(result);
+      
     });
 
 
@@ -62,6 +55,8 @@ $(document).ready(function () {
     {
       type: "get",
       url: "http://localhost:8080/admin/comments",
+      xhrFields: { withCredentials: true },
+
       // async: true,
       success(result) {
 
