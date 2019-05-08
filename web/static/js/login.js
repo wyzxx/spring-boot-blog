@@ -9,7 +9,7 @@ $(document).ready(function () {
     //     $.ajax(
     //         {
     //             type: "post",
-    //             url: "http://localhost:8080/admin/login",
+    //             url: host+"/admin/login",
     //             data:{"user":user,"passwd":passwd},
     //             // async: true,
     //             success(result) {
@@ -33,7 +33,7 @@ $(document).ready(function () {
         $.ajax(
             {
                 type: "post",
-                url: "http://localhost:8080/admin/login",
+                url: host+"/admin/login",
                 xhrFields: { withCredentials: true },
                 crossDomin:true,
                 data: { "user": user, "passwd": passwd },
