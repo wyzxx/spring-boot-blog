@@ -12,16 +12,16 @@
   <title>Admin - Dashboard</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> -->
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.css" rel="stylesheet">
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="static/css/sb-admin-2.css" rel="stylesheet">
+  <link href="static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 
 </head>
-  
+
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -451,8 +451,8 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">博客管理</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#addArticleModal"><i
-                class="fas fa-download fa-sm text-white-50"></i> 新建博客</a>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal"
+              data-target="#addArticleModal"><i class="fas fa-download fa-sm text-white-50"></i> 新建博客</a>
           </div>
           <p class="mb-4">
             在这查看与管理你的博客
@@ -616,8 +616,8 @@
     </div>
   </div>
 
-    <!-- article Modal-->
-    <div class="modal fade" id="articleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <!-- article Modal-->
+  <div class="modal fade" id="articleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -628,67 +628,70 @@
           </button>
         </div>
         <div class="modal-body">
-            <form>
-                <div class="form-group row">
-                    <label for="inputTitle1" class="col-sm-2 col-form-label">标题</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputTitle1">
-                    </div>
-                </div>
+          <form>
+            <div class="form-group row">
+              <label for="inputTitle1" class="col-sm-2 col-form-label">标题</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputTitle1">
+              </div>
+            </div>
 
-                <div class="form-group row">
-                    <label for="inputCategory1" class="col-sm-2 col-form-label">分类</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputCategory1" placeholder="空表示删除所有分类，新增直接修改">
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="categoryChange" id="categoryChange1" value="false" checked>
-                        <label class="form-check-label" for="categoryChange1">
-                         不变
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="categoryChange" id="categoryChange2" value="true">
-                        <label class="form-check-label" for="categoryChange2">
-                          变化
-                        </label>
-                      </div>
-                </div>
+            <div class="form-group row">
+              <label for="inputCategory1" class="col-sm-2 col-form-label">分类</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputCategory1" placeholder="空表示删除所有分类，新增直接修改">
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="categoryChange" id="categoryChange1" value="false"
+                  checked>
+                <label class="form-check-label" for="categoryChange1">
+                  不变
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="categoryChange" id="categoryChange2" value="true">
+                <label class="form-check-label" for="categoryChange2">
+                  变化
+                </label>
+              </div>
+            </div>
 
-                <div class="form-group row">
-                    <label for="inputImgUrl1" class="col-sm-2 col-form-label">图片</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputImgUrl1">
-                    </div>
-                </div>
+            <div class="form-group row">
+              <label for="inputImgUrl1" class="col-sm-2 col-form-label">图片</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputImgUrl1">
+              </div>
+            </div>
 
 
-                <fieldset class="form-group">
-                  <div class="row">
-                    <legend class="col-form-label col-sm-2 pt-0">显示/隐藏</legend>
-                    <div class="col-sm-10">
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="true" checked>
-                        <label class="form-check-label" for="gridRadios1">
-                         显示
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="false">
-                        <label class="form-check-label" for="gridRadios2">
-                          隐藏
-                        </label>
-                      </div>
-                    </div>
+            <fieldset class="form-group">
+              <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">显示/隐藏</legend>
+                <div class="col-sm-10">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="true"
+                      checked>
+                    <label class="form-check-label" for="gridRadios1">
+                      显示
+                    </label>
                   </div>
-                </fieldset>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="false">
+                    <label class="form-check-label" for="gridRadios2">
+                      隐藏
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
 
 
-              </form>
+          </form>
         </div>
         <div class="modal-footer">
           <!-- <button class="btn btn-warning" type="button">查看评论</button>     to do -->
-          <button class="btn btn-primary" id="articleContentView" type="button" data-toggle="modal" data-target="#articleContentModal" >查看内容</button>
+          <button class="btn btn-primary" id="articleContentView" type="button" data-toggle="modal"
+            data-target="#articleContentModal">查看内容</button>
           <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
           <button class="btn btn-primary" id="article-modify" type="button" data-dismiss="modal">提交</button>
         </div>
@@ -700,47 +703,47 @@
 
 
 
-<!--add article Modal-->
-<div class="modal fade" id="addArticleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" >新建文章</h5>
-      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">×</span>
-      </button>
-    </div>
-    <div class="modal-body">
-        <form>
+  <!--add article Modal-->
+  <div class="modal fade" id="addArticleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">新建文章</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
             <div class="form-group row">
-                <label for="inputTitle2" class="col-sm-2 col-form-label">标题</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputTitle2">
-                </div>
+              <label for="inputTitle2" class="col-sm-2 col-form-label">标题</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputTitle2">
+              </div>
             </div>
 
             <div class="form-group row">
-                <label for="inputCategory2" class="col-sm-2 col-form-label">分类</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputCategory2" placeholder="">
-                </div>
-                
+              <label for="inputCategory2" class="col-sm-2 col-form-label">分类</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputCategory2" placeholder="">
+              </div>
+
             </div>
 
             <div class="form-group row">
-                <label for="inputImgUrl1" class="col-sm-2 col-form-label">图片</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputImgUrl2">
-                </div>
+              <label for="inputImgUrl1" class="col-sm-2 col-form-label">图片</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputImgUrl2">
+              </div>
             </div>
 
             <div class="form-group row">
-                <label for="inputImgUrl1" class="col-sm-2 col-form-label">内容</label>
-                <div class="col-sm-10">
-                    <textarea name="textarea" id="textarea" cols="30" rows="1">
+              <label for="inputImgUrl1" class="col-sm-2 col-form-label">内容</label>
+              <div class="col-sm-10">
+                <textarea name="textarea" id="textarea" cols="30" rows="1">
                     </textarea>
-                </div>
+              </div>
             </div>
 
 
@@ -749,9 +752,10 @@ aria-hidden="true">
                 <legend class="col-form-label col-sm-2 pt-0">显示/隐藏</legend>
                 <div class="col-sm-10">
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridRadios2" id="gridRadios21" value="true" checked>
+                    <input class="form-check-input" type="radio" name="gridRadios2" id="gridRadios21" value="true"
+                      checked>
                     <label class="form-check-label" for="gridRadios21">
-                     显示
+                      显示
                     </label>
                   </div>
                   <div class="form-check">
@@ -766,185 +770,187 @@ aria-hidden="true">
 
 
           </form>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-      <button class="btn btn-primary" id="article-add" type="button" data-dismiss="modal">提交</button>
-    </div>
-  </div>
-</div>
-</div>
-
-
-
-
-<!--del article Modal-->
-<div class="modal fade" id="articleDelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" >确认删除文章?</h5>
-      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">×</span>
-      </button>
-    </div>
-    <!-- <div class="modal-body">
-        <form>
-            <div class="form-group row">
-                <label for="inputImgUrl1" class="col-sm-2 col-form-label">图片</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputImgUrl2">
-                </div>
-            </div>
-          </form>
-    </div> -->
-    <div class="modal-footer">
-      <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-      <button class="btn btn-primary" id="article-delete" type="button" data-dismiss="modal">是</button>
-    </div>
-  </div>
-</div>
-</div>
-
-
-
-
-
-<!--del comment Modal-->
-<div class="modal fade" id="commentDelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" >确认删除评论?</h5>
-      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">×</span>
-      </button>
-    </div>
-    <!-- <div class="modal-body">
-        <form>
-            <div class="form-group row">
-                <label for="inputImgUrl1" class="col-sm-2 col-form-label">图片</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputImgUrl2">
-                </div>
-            </div>
-          </form>
-    </div> -->
-    <div class="modal-footer">
-      <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-      <button class="btn btn-primary" id="comment-delete" type="button" data-dismiss="modal">是</button>
-    </div>
-  </div>
-</div>
-</div>
-
-
-
-
-
-
-
-<!-- articleContent Modal-->
-<div class="modal fade" id="articleContentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" >文章内容</h5>
-      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">×</span>
-      </button>
-    </div>
-    <div class="modal-body">
-        <form>
-            
-            <div class="form-group row">
-                <label for="inputImgUrl1" class="col-sm-2 col-form-label">内容</label>
-                <div class="col-sm-10">
-                    <textarea name="textarea2" id="textarea2" cols="30" rows="1">
-                    </textarea>
-                </div>
-            </div>
-
-          </form>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-      <button class="btn btn-primary" id="articleContentModify" type="button" data-dismiss="modal">提交</button>
-    </div>
-  </div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-      <!-- comment Modal-->
-      <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" >改变评论</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-              <fieldset class="form-group">
-                  <div class="row">
-                    <legend class="col-form-label col-sm-2 pt-0">显示/隐藏</legend>
-                    <div class="col-sm-10">
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios3" id="gridRadios31" value="true" checked>
-                        <label class="form-check-label" for="gridRadios31">
-                         显示
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios3" id="gridRadios32" value="false">
-                        <label class="form-check-label" for="gridRadios32">
-                          隐藏
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-    
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-            <button class="btn btn-primary" id="comment-modify" data-dismiss="modal">提交</button>
-          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+          <button class="btn btn-primary" id="article-add" type="button" data-dismiss="modal">提交</button>
         </div>
       </div>
     </div>
+  </div>
+
+
+
+
+  <!--del article Modal-->
+  <div class="modal fade" id="articleDelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">确认删除文章?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <!-- <div class="modal-body">
+        <form>
+            <div class="form-group row">
+                <label for="inputImgUrl1" class="col-sm-2 col-form-label">图片</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputImgUrl2">
+                </div>
+            </div>
+          </form>
+    </div> -->
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+          <button class="btn btn-primary" id="article-delete" type="button" data-dismiss="modal">是</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!--del comment Modal-->
+  <div class="modal fade" id="commentDelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">确认删除评论?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <!-- <div class="modal-body">
+        <form>
+            <div class="form-group row">
+                <label for="inputImgUrl1" class="col-sm-2 col-form-label">图片</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputImgUrl2">
+                </div>
+            </div>
+          </form>
+    </div> -->
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+          <button class="btn btn-primary" id="comment-delete" type="button" data-dismiss="modal">是</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <!-- articleContent Modal-->
+  <div class="modal fade" id="articleContentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">文章内容</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+
+            <div class="form-group row">
+              <label for="inputImgUrl1" class="col-sm-2 col-form-label">内容</label>
+              <div class="col-sm-10">
+                <textarea name="textarea2" id="textarea2" cols="30" rows="1">
+                    </textarea>
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+          <button class="btn btn-primary" id="articleContentModify" type="button" data-dismiss="modal">提交</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- comment Modal-->
+  <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">改变评论</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label col-sm-2 pt-0">显示/隐藏</legend>
+              <div class="col-sm-10">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios3" id="gridRadios31" value="true"
+                    checked>
+                  <label class="form-check-label" for="gridRadios31">
+                    显示
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios3" id="gridRadios32" value="false">
+                  <label class="form-check-label" for="gridRadios32">
+                    隐藏
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+          <button class="btn btn-primary" id="comment-modify" data-dismiss="modal">提交</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/vendor/jquery/jquery.min.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
 
+  <script src="static/js/jquery.cookie.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
+  <script src="static/js/demo/datatables-demo.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.js"></script>
+  <script src="static/js/sb-admin-2.js"></script>
 
   <!-- Page level plugins -->
   <!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
@@ -954,8 +960,10 @@ aria-hidden="true">
   <!-- <script src="js/demo/chart-pie-demo.js"></script> -->
 
   <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+
+  <script src="static/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 
 

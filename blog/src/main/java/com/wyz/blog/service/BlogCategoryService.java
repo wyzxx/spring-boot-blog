@@ -1,6 +1,7 @@
 package com.wyz.blog.service;
 
 import com.wyz.blog.dataObject.BlogCategory;
+import com.wyz.blog.entity.Category;
 import com.wyz.blog.entity.Filter;
 import com.wyz.blog.error.BlogException;
 
@@ -16,5 +17,5 @@ public interface BlogCategoryService {
     boolean delCategory(String category) throws BlogException;
     List<String> getCategory(Integer articleId);
 
-    List<Filter> getCategories();
+    List<Category> getCategories();
 }

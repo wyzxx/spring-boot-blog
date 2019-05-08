@@ -3,6 +3,7 @@ package com.wyz.blog.util;
 import com.wyz.blog.dataObject.*;
 import com.wyz.blog.entity.Article;
 import com.wyz.blog.entity.Category;
+import com.wyz.blog.entity.Comment;
 import com.wyz.blog.entity.Filter;
 import com.wyz.blog.validator.BlogValidator;
 
@@ -71,13 +72,15 @@ public class BlogUtil {
     public static BlogComment createBlogComment(String content, String name, String email, Integer ref) {
         BlogComment blogComment = new BlogComment();
         blogComment.setContent(content);
-        blogComment.setName(name);
+        if(name!=null & !name.equals("")){
+            blogComment.setName(name);
+        }
         blogComment.setEmail(email);
         blogComment.setReference(ref);
         return blogComment;
     }
 
-    public static  List<Filter> filterList(List<Filter> list){
+    public static <E>  List<E> filterList(List<E> list){
         if(list==null){
             return null;
         }
@@ -100,6 +103,20 @@ public class BlogUtil {
         category.setModifiedBy(blogCategory.getModifiedBy());
         return category;
     }
+
+    public static Comment convertFromBlogComment(BlogComment blogComment){
+        Comment comment = new Comment();
+        comment.setId(blogComment.getId());
+        comment.setContent(blogComment.getContent());
+        comment.setEmail(blogComment.getEmail());
+        comment.setIsEffective(blogComment.getIsEffective());
+        comment.setReference(blogComment.getReference());
+        comment.setName(blogComment.getName());
+        comment.setIsExpected(blogComment.getIsExpected());
+        return comment;
+    }
+
+
 
     public static Category[] convertFromBlogCategory(BlogCategory[] blogCategories){
         if(blogCategories==null){

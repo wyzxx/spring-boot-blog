@@ -9,6 +9,8 @@ public enum BlogError implements CommonError {
     CATEGORY_ALLREADY_EXIST(10001,"分类已存在"),
     CATEGORY_NOT_EXIST(10002,"分类不存在"),
     ARTICLE_NOT_EXIST(10003,"文章不存在"),
+    PASSWD_WRONG(10004,"用户名或密码错误"),
+    UNKNOWN_ERROR(20000,"未知错误"),
     ;
 
 

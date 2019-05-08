@@ -2,13 +2,20 @@ package com.wyz.blog.controller;
 
 import com.wyz.blog.dataObject.BlogComment;
 import com.wyz.blog.entity.Article;
+import com.wyz.blog.entity.Comment;
+import com.wyz.blog.entity.Filter;
+import com.wyz.blog.entity.Sessions;
 import com.wyz.blog.error.BlogException;
 import com.wyz.blog.service.BlogArticleService;
 import com.wyz.blog.service.BlogCommentService;
+import com.wyz.blog.util.SHA256Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import sun.rmi.runtime.Log;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -18,7 +25,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/admin")
-@CrossOrigin(origins = {"*"},allowCredentials = "true")
+//@CrossOrigin(origins = {"*"},allowCredentials = "true")
 public class BlogAdminController extends BlogCommonController {
 
 
@@ -30,6 +37,17 @@ public class BlogAdminController extends BlogCommonController {
 
     @Autowired
     private HttpServletRequest httpServletRequest;
+
+    @PostMapping("/login")
+    public Boolean login(@RequestParam(name = "user") String user,
+                        @RequestParam(name = "passwd") String passwd,HttpServletRequest request, HttpServletResponse response){
+        //验证密码
+        //此处未验证
+
+        httpServletRequest.getSession().setAttribute("ISLOGIN",true);
+        return true;
+    }
+
 
 
     @GetMapping("/articles")
@@ -53,12 +71,6 @@ public class BlogAdminController extends BlogCommonController {
                            @RequestParam(name = "imgUrl") String imgUrl,
                            @RequestParam(name = "data") String data) throws BlogException {
 
-        // 1.判断是否登陆
-//        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
-//        if(isLogin == null || !isLogin.booleanValue()){
-//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，还不能下单");
-//        }
-
 
         blogArticleService.addArticle(title,category,isEffective,imgUrl,data);
 
@@ -71,11 +83,7 @@ public class BlogAdminController extends BlogCommonController {
                               @RequestParam(name = "isEffective") Boolean isEffective,
                               @RequestParam(name = "imgUrl") String imgUrl,
                               @RequestParam(name = "data") String data,@PathVariable Integer id) throws BlogException {
-        // 1.判断是否登陆
-//        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
-//        if(isLogin == null || !isLogin.booleanValue()){
-//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，还不能下单");
-//        }
+
         System.out.println(title+" "+category+" "+isEffective+" "+imgUrl+" "+ data+" "+id);
 
         // 更新文章
@@ -86,11 +94,7 @@ public class BlogAdminController extends BlogCommonController {
     @DeleteMapping("/articles/{id}")
     public boolean delArticle(@PathVariable Integer id){
 
-        // 1.判断是否登陆
-//        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
-//        if(isLogin == null || !isLogin.booleanValue()){
-//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，还不能下单");
-//        }
+
 
         boolean result = blogArticleService.delArticle(id);
         return result;
@@ -106,8 +110,8 @@ public class BlogAdminController extends BlogCommonController {
 
     @GetMapping("/articles/{articleId}/comments")
     @Override
-    public List<BlogComment> getComments(@PathVariable Integer articleId){
-        List<BlogComment> list = super.getComments(articleId);
+    public List<Comment> getComments(@PathVariable Integer articleId){
+        List<Comment> list = super.getComments(articleId);
         return list;
     }
 
@@ -116,11 +120,7 @@ public class BlogAdminController extends BlogCommonController {
     public void updateComment(
                               @RequestParam(name = "isEffective") Boolean isEffective,
                               @PathVariable Integer id) throws BlogException {
-        // 1.判断是否登陆
-//        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
-//        if(isLogin == null || !isLogin.booleanValue()){
-//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，还不能下单");
-//        }
+
 
         System.out.println(isEffective+" "+id);
 
@@ -131,11 +131,7 @@ public class BlogAdminController extends BlogCommonController {
     @DeleteMapping("/comments/{id}")
     public boolean delComment(@PathVariable Integer id){
 
-        // 1.判断是否登陆
-//        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
-//        if(isLogin == null || !isLogin.booleanValue()){
-//            throw new BlogException(BlogError.USER_NOT_LOGIN,"用户还未登录，还不能下单");
-//        }
+
 
         boolean result = blogCommentService.deleteComment(id);
         return result;
