@@ -8,12 +8,6 @@ $(document).ready(function () {
   var content = Object();
 
 
-
-
-
-
-
-
   var id = $.cookie('JSESSIONID');
   console.log(id);
   // var url = location.href;
@@ -34,7 +28,7 @@ $(document).ready(function () {
   $.ajax(
     {
       type: "GET",
-      url: "http://localhost:8080/admin/articles",
+      url: host+"/admin/articles",
       xhrFields: { withCredentials: true },
 
       // async: true,
@@ -67,7 +61,7 @@ $(document).ready(function () {
   $.ajax(
     {
       type: "get",
-      url: "http://localhost:8080/admin/comments",
+      url: host+"/admin/comments",
       xhrFields: { withCredentials: true },
 
       // async: true,
@@ -102,7 +96,7 @@ $(document).ready(function () {
     $.ajax(
       {
         type: "PUT",
-        url: "http://localhost:8080/admin/articles/"+articleId,
+        url: host+"/admin/articles/"+articleId,
         contentType:"application/x-www-form-urlencoded",
         // contentType:"application/x-www-form-urlencoded",
         // contentType:"json",
@@ -123,7 +117,7 @@ $(document).ready(function () {
     $.ajax(
       {
         type: "DELETE",
-        url: "http://localhost:8080/admin/articles/"+articleId,
+        url: host+"/admin/articles/"+articleId,
         // contentType:"application/x-www-form-urlencoded",
         // contentType:"json",
         xhrFields:{withCredentials:true},
@@ -144,7 +138,7 @@ $(document).ready(function () {
     $.ajax(
       {
         type: "DELETE",
-        url: "http://localhost:8080/admin/comments/"+commentId,
+        url: host+"/admin/comments/"+commentId,
         // contentType:"application/x-www-form-urlencoded",
         // contentType:"json",
         xhrFields:{withCredentials:true},
@@ -166,7 +160,7 @@ $('#article-add').on('click',function(e){
   $.ajax(
     {
       type: "POST",
-      url: "http://localhost:8080/admin/articles",
+      url: host+"/admin/articles",
       // contentType:"application/x-www-form-urlencoded",
       // contentType:"json",
       xhrFields:{withCredentials:true},
@@ -184,7 +178,7 @@ $('#articleContentView').on('click',function(e){
   $.ajax(
     {
       type: "get",
-      url: "http://localhost:8080/admin/articles/"+article.id,
+      url: host+"/admin/articles/"+article.id,
       // async: true,
       xhrFields:{withCredentials:true},
       success(result) {
@@ -206,7 +200,7 @@ $('#articleContentModify').on('click',function(e) {
   $.ajax(
     {
       type: "PUT",
-      url: "http://localhost:8080/admin/content/"+contentId,
+      url: host+"/admin/content/"+contentId,
       data:{"data":data},
       // contentType:"application/x-www-form-urlencoded",
       // contentType:"json",
@@ -231,7 +225,7 @@ $('#comment-modify').on('click',function(e) {
   $.ajax(
     {
       type: "PUT",
-      url: "http://localhost:8080/admin/comments/"+commentId,
+      url: host+"/admin/comments/"+commentId,
       // contentType:"application/x-www-form-urlencoded",
       // contentType:"json",
       xhrFields:{withCredentials:true},

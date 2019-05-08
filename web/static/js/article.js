@@ -6,12 +6,6 @@ $(document).ready(function () {
     console.log(id);
 
 
-
-
-
-    var host = "http://localhost:8080";
-
-
     //获取文章内容
     //Ajax调用处理
     $.ajax(

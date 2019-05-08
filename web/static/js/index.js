@@ -1,6 +1,4 @@
 $(document).ready(function () {
-
-    var host = "http://localhost:8080";
     //获取所有文章信息  
     //Ajax调用处理
     $.ajax(
