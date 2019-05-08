@@ -35,13 +35,16 @@ $(document).ready(function () {
                 type: "post",
                 url: "http://localhost:8080/admin/login",
                 xhrFields: { withCredentials: true },
+                crossDomin:true,
                 data: { "user": user, "passwd": passwd },
                 // async: true,
                 success(result) {
                     // alert(result);
                     // console.log($.cookie('JSESSIONID', result));
-                    window.location.href = "admin.html";
-                    return false;
+                    // alert($.cookie);
+                    
+                    // window.location.href = "admin.html";
+                    // return false;
                 }
             });
     });
