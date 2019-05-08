@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import sun.rmi.runtime.Log;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -23,7 +24,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/admin")
-@CrossOrigin(origins = {"*"},allowCredentials = "true")
+//@CrossOrigin(origins = {"*"},allowCredentials = "true")
 public class BlogAdminController extends BlogCommonController {
 
 
@@ -38,18 +39,21 @@ public class BlogAdminController extends BlogCommonController {
 
     @PostMapping("/login")
     public Object login(@RequestParam(name = "user") String user,
-                        @RequestParam(name = "passwd") String passwd){
+                        @RequestParam(name = "passwd") String passwd,HttpServletRequest request, HttpServletResponse response){
         //验证密码
 
 //        Object object = Sessions.getAtomicInteger().incrementAndGet();
 //        String key = String.valueOf(SHA256Util.getSHA256StrJava(object.toString()));//改成别的HASH函数
 //        Sessions.getMap().put(key,"login");
 
+        System.out.println(request);
+        System.out.println(response);
+        System.out.println(1);
 
-        String id = httpServletRequest.getSession().getId();
-        httpServletRequest.getSession().setAttribute("ISLOGIN",true);
-        Sessions.getMap().put(id,"login");
-        return id;
+//        String id = httpServletRequest.getSession().getId();
+//        httpServletRequest.getSession().setAttribute("ISLOGIN",true);
+//        Sessions.getMap().put(id,"login");
+        return 1;
     }
 
     @PostMapping("/logintest")
