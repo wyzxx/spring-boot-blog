@@ -43,8 +43,8 @@ $(document).ready(function () {
                     // console.log($.cookie('JSESSIONID', result));
                     // alert($.cookie);
                     
-                    // window.location.href = "admin.html";
-                    // return false;
+                    window.location.href = "admin.html";
+                    return false;
                 }
             });
     });
